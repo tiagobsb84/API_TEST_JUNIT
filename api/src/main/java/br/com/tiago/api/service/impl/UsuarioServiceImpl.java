@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.tiago.api.model.Usuario;
 import br.com.tiago.api.repository.UsuarioRepository;
 import br.com.tiago.api.service.UsuarioService;
+import br.com.tiago.api.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -18,7 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario findById(Integer id) {
 		Optional<Usuario> obj = usuarioRepository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
 	}
 
 	
