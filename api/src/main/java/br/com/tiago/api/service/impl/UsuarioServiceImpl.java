@@ -1,5 +1,6 @@
 package br.com.tiago.api.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
 	}
 
+	public List<Usuario> findAll() {
+		return usuarioRepository.findAll();
+	}
 	
 }
