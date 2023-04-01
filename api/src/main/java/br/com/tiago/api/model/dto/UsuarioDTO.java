@@ -1,6 +1,7 @@
 package br.com.tiago.api.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ public class UsuarioDTO {
 	private String name;
 	private String email;
 	
-	@JsonIgnore
+	//Nesse caso só vai libera para escrita e não para leitura.
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 }
